@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" 
+    "http://struts.apache.org/dtds/struts-2.3.dtd"> 
+
+<struts>
+<!-- 
+          该配置需要体现2点内容
+    1.请求对应哪个Action类及方法
+    2.请求转发到哪个页面      
+-->
+<!-- package相当于类 主要封装action  
+   
+   name:是package的名称，用于引用package
+   namespace:是package的命名空间，用于访问一个package，以“/”开头
+   extends:是package的继承关系，是指继承与某个package,继承于这个package相当于把
+                  该package下配置的内容复制到当前package下
+      一般情况下，一个模块用一个package来配置
+-->
+<package name="day01" namespace="/demo" extends="struts-default">
+    <!-- 访问地址 后缀.action固定  
+      http://localhost:8080/Struts2Day01/demo/hello.action
+      
+      name:声明的组件名，用于找到Action类。
+                      一个package下可以配置多个Action标记，他们之间的name不能重名
+      class:对应Action类名
+      method:要调用的方法
+     -->
+    <action name="hello" class="com.tarena.action.HelloAction" method="sayHello">
+        
+        
+        <!-- 
+        result用于配置转发的页面。
+        name:是result标签的名称，用于匹配Action方法的返回值。
+                          每个Action下可以配置多个result，但不能重名
+         -->
+        <result name="ok">
+            /hello.jsp
+        </result>
+    </action>
+</package>
+</struts>
